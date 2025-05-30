@@ -40,12 +40,21 @@ cd PortfolioGallery
 npm install
 ```
 
-3. Start the development server:
+3. Set up environment variables:
+```bash
+# Copy the example environment file
+cp .env.example .env
+
+# Edit .env and add your values
+# For local development, you can use the default localhost URL
+```
+
+4. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
+5. Open [http://localhost:5173](http://localhost:5173) in your browser
 
 ## Project Structure
 
@@ -62,6 +71,16 @@ PortfolioGallery/
 │   └── contact-form/     # Contact form handler
 └── shared/              # Shared types and schemas
 ```
+
+## Environment Variables
+
+The application uses the following environment variables:
+
+- `VITE_API_ENDPOINT`: The API Gateway endpoint URL for the contact form (production only)
+  - Format: `https://your-api-id.execute-api.your-region.amazonaws.com/prod`
+  - Local development uses `http://localhost:3001` by default
+
+Create a `.env` file in the root directory with these variables for local development. For production, set them in your deployment environment.
 
 ## Deployment
 

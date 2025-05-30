@@ -1,5 +1,5 @@
 export const config = {
   apiEndpoint: process.env.NODE_ENV === 'production'
-    ? 'https://uc00uuzw02.execute-api.us-east-1.amazonaws.com/prod'
+    ? process.env.VITE_API_ENDPOINT
     : 'http://localhost:3001'
 };
