@@ -6,6 +6,7 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   base: '/PortfolioGallery/',  // Your repository name
+  root: 'client',  // Set the root directory to client
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client/src"),
@@ -14,8 +15,9 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist',
+    outDir: '../dist',  // Output to the root dist directory
     target: 'esnext',
-    sourcemap: true
+    sourcemap: true,
+    emptyOutDir: true
   },
 });
