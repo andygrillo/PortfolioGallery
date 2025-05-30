@@ -27,17 +27,12 @@ export default function About() {
             <div className="space-y-6">
               <div>
                 <h3>TECHNICAL EXPERTISE</h3>
-                <div className="grid grid-cols-2 gap-3 text-accent">
-                  <div>• 3ds Max</div>
-                  <div>• Corona Renderer</div>
-                  <div>• V-Ray</div>
-                  <div>• Unreal Engine</div>
-                  <div>• AutoCAD</div>
-                  <div>• After Effects</div>
-                  <div>• ArchiCAD</div>
-                  <div>• Premiere Pro</div>
-                  <div>• Photoshop</div>
-                  <div>• Stable Diffusion</div>
+                <div className="space-y-2 text-accent">
+                  <div>• 3ds Max & Corona / Vray Renderer</div>
+                  <div>• Unreal Engine and Unity 3D</div>
+                  <div>• AutoCAD, Microstation & ArchiCAD</div>
+                  <div>• Adobe Suite (Photoshop, After Effects, Premiere Pro)</div>
+                  <div>• Stable Diffusion & AI integration</div>
                 </div>
               </div>
 
@@ -47,7 +42,7 @@ export default function About() {
                   <div>• Clinton Foundation</div>
                   <div>• Deutsche Bank</div>
                   <div>• Royal Academy of Music</div>
-                  <div>• Amazon & IBM (via Grillo)</div>
+                  <div>• Amazon & IBM</div>
                   <div>• Squint Opera</div>
                   <div>• John McAslan + Partners</div>
                 </div>
@@ -57,7 +52,7 @@ export default function About() {
 
           <div className="space-y-8">
             <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800"
+              src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800"
               alt="Architectural workspace"
               className="w-full rounded-lg shadow-lg"
               loading="lazy"
