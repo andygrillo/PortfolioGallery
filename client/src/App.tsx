@@ -7,9 +7,8 @@ import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 
 function Router() {
-  // In development, use "/" as the path
-  // In production (GitHub Pages), match both "/" and "/PortfolioGallery"
-  const homePath = import.meta.env.DEV ? "/" : "/:page*";
+  // Use root path for custom domain
+  const homePath = "/";
   
   return (
     <Switch>
