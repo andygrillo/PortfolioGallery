@@ -10,38 +10,35 @@ const contactMessageSchema = z.object({
   message: z.string().min(1)
 });
 
-// Get allowed origin based on environment
-const getAllowedOrigin = () => {
-  const origin = process.env.NODE_ENV === 'production'
-    ? 'https://andygrillo.github.io'
-    : 'http://localhost:5173';
-  return origin;
-};
-
 // CORS headers
 const corsHeaders = {
-  'Access-Control-Allow-Origin': getAllowedOrigin(),
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Credentials': 'true'
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'OPTIONS,POST',
+  'Access-Control-Allow-Headers': 'Content-Type'
 };
 
 exports.handler = async (event) => {
+  console.log('Event:', JSON.stringify(event, null, 2));
+
   // Handle OPTIONS request for CORS preflight
   if (event.httpMethod === 'OPTIONS') {
+    console.log('Handling OPTIONS request');
     return {
       statusCode: 200,
       headers: corsHeaders,
-      body: ''
+      body: JSON.stringify({ message: 'OK' })
     };
   }
 
   try {
+    console.log('Handling POST request');
     // Parse request body
     const body = JSON.parse(event.body);
+    console.log('Request body:', body);
     
     // Validate the request data
     const validatedData = contactMessageSchema.parse(body);
+    console.log('Validated data:', validatedData);
     
     // Prepare email parameters
     const emailParams = {
@@ -69,7 +66,9 @@ ${validatedData.message}
     };
     
     // Send email
+    console.log('Sending email');
     await ses.sendEmail(emailParams).promise();
+    console.log('Email sent successfully');
     
     return {
       statusCode: 200,
@@ -85,7 +84,8 @@ ${validatedData.message}
       statusCode: error.name === 'ZodError' ? 400 : 500,
       headers: corsHeaders,
       body: JSON.stringify({
-        message: error.name === 'ZodError' ? 'Invalid request data' : 'Internal server error'
+        message: error.name === 'ZodError' ? 'Invalid request data' : 'Internal server error',
+        error: error.message
       })
     };
   }
