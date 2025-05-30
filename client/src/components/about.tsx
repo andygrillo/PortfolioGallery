@@ -28,8 +28,8 @@ export default function About() {
 
           <div>
             <img
-              src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=800"
-              alt="Architectural workspace"
+              src="/images/andy.jpg"
+              alt="Andy Meira - Architect and 3D Artist"
               className="w-full rounded-lg shadow-lg"
               loading="lazy"
             />
