@@ -217,7 +217,7 @@ export default function Gallery() {
 
         {/* Modal */}
         <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
-          <DialogContent className="max-w-4xl w-full h-[90vh] p-0">
+          <DialogContent className="max-w-6xl w-full h-[90vh] p-0">
             {selectedItem && (
               <div className="flex flex-col h-full">
                 <DialogHeader className="p-6 pb-4">
@@ -225,9 +225,9 @@ export default function Gallery() {
                 </DialogHeader>
                 
                 <div className="flex-1 p-6 overflow-auto">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
-                    <div className="lg:col-span-2 flex flex-col">
-                      <div className="relative flex-1 overflow-hidden rounded-2xl">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 h-full gap-8">
+                    <div className="lg:col-span-2">
+                      <div className="relative h-full overflow-hidden rounded-2xl">
                         <img
                           src={selectedItem.images[currentImageIndex]}
                           alt={`${selectedItem.title} - Image ${currentImageIndex + 1}`}
@@ -237,68 +237,70 @@ export default function Gallery() {
                               : "object-contain object-top"
                           }`}
                         />
-                      </div>
-                      
-                      {selectedItem.images.length > 1 && (
-                        <div className="flex items-center justify-center mt-4 space-x-6">
-                          <span className="text-sm text-accent font-mono">
-                            {currentImageIndex + 1} / {selectedItem.images.length}
-                          </span>
-                          <div className="flex space-x-3">
-                            {selectedItem.images.map((_, index) => (
-                              <button
-                                key={index}
-                                className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                                  index === currentImageIndex 
-                                    ? 'bg-foreground scale-125' 
-                                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/60'
-                                }`}
-                                onClick={() => setCurrentImageIndex(index)}
-                              />
-                            ))}
+                        
+                        {selectedItem.images.length > 1 && (
+                          <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center space-x-6">
+                            <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-6">
+                              <span className="text-sm text-accent font-mono">
+                                {currentImageIndex + 1} / {selectedItem.images.length}
+                              </span>
+                              <div className="flex space-x-3">
+                                {selectedItem.images.map((_, index) => (
+                                  <button
+                                    key={index}
+                                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                                      index === currentImageIndex 
+                                        ? 'bg-foreground scale-125' 
+                                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/60'
+                                    }`}
+                                    onClick={() => setCurrentImageIndex(index)}
+                                  />
+                                ))}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
                     
-                    <div className="space-y-6">
-                      <div>
-                        <h3>PROJECT TYPE</h3>
-                        <p className="text-accent">{selectedItem.category}</p>
-                      </div>
-                      
-                      {selectedItem.description && (
+                    <div className="flex flex-col justify-between">
+                      <div className="space-y-6">
                         <div>
-                          <h3>DESCRIPTION</h3>
-                          <p className="text-accent leading-relaxed">{selectedItem.description}</p>
+                          <h3>PROJECT TYPE</h3>
+                          <p className="text-accent">{selectedItem.category}</p>
                         </div>
-                      )}
-                      
-                      <div>
-                        <h3>SERVICES USED</h3>
-                        <div className="space-y-1 text-accent text-sm">
-                          {selectedItem.services ? (
-                            selectedItem.services.map((service, index) => (
-                              <p key={index}>• {service}</p>
-                            ))
-                          ) : (
-                            <>
-                              <p>• 3D Modelling, materials and lighting</p>
-                              <p>• Photorealistic rendering</p>
-                              <p>• Post-Production</p>
-                            </>
-                          )}
+                        
+                        {selectedItem.description && (
+                          <div>
+                            <h3>DESCRIPTION</h3>
+                            <p className="text-accent leading-relaxed">{selectedItem.description}</p>
+                          </div>
+                        )}
+                        
+                        <div>
+                          <h3>SERVICES USED</h3>
+                          <div className="space-y-1 text-accent text-sm">
+                            {selectedItem.services ? (
+                              selectedItem.services.map((service, index) => (
+                                <p key={index}>• {service}</p>
+                              ))
+                            ) : (
+                              <>
+                                <p>• 3D Modelling, materials and lighting</p>
+                                <p>• Photorealistic rendering</p>
+                                <p>• Post-Production</p>
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
                       
-                      <div className="pt-4">
-                        <Button
-                          onClick={handleDiscussProject}
-                          className="w-full bg-primary text-white hover:bg-accent transition-colors duration-300"
-                        >
-                          Discuss Similar Project
-                        </Button>
-                      </div>
+                      <Button
+                        onClick={handleDiscussProject}
+                        className="w-full bg-primary text-white hover:bg-accent transition-colors duration-300 mt-6"
+                      >
+                        Discuss Similar Project
+                      </Button>
                     </div>
                   </div>
                 </div>

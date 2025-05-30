@@ -42,18 +42,20 @@ exports.handler = async (event) => {
     
     // Prepare email parameters
     const emailParams = {
-      Source: `"${validatedData.name}" <andresmeira@gmail.com>`, // Verified email with sender's name
+      Source: 'Andy Meira <andresmeira@gmail.com>', // Fixed sender name
       Destination: {
         ToAddresses: ['andresmeira@gmail.com']
       },
       ReplyToAddresses: [validatedData.email], // Set reply-to as sender's email
       Message: {
         Subject: {
-          Data: `New Contact Form Submission: ${validatedData.projectType}`
+          Data: `Portfolio Contact: ${validatedData.projectType} Project`
         },
         Body: {
           Text: {
             Data: `
+New contact form submission from your portfolio website:
+
 Name: ${validatedData.name}
 Email: ${validatedData.email}
 Project Type: ${validatedData.projectType}
