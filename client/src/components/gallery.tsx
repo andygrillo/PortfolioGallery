@@ -170,8 +170,8 @@ export default function Gallery() {
         <div className="text-center mb-16">
           <h2>SELECTED WORKS</h2>
           <p className="text-lg text-accent max-w-2xl mx-auto">
-            A curated collection of 3D projects showcasing architectural visualization,
-            product design, marketing materials.
+            A curated collection showcasing architectural visualization, product design,
+            and marketing campaigns for global brands and architectural practices.
           </p>
         </div>
 

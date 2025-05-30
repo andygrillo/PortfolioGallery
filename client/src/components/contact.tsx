@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { config } from "@/config";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { insertContactMessageSchema, type InsertContactMessage } from "@shared/schema";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const contactFormSchema = insertContactMessageSchema.extend({
   projectType: insertContactMessageSchema.shape.projectType,
@@ -19,6 +20,8 @@ const contactFormSchema = insertContactMessageSchema.extend({
 export default function Contact() {
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
+  const captchaRef = useRef<HCaptcha>(null);
 
   const form = useForm<InsertContactMessage>({
     resolver: zodResolver(contactFormSchema),
@@ -32,7 +35,13 @@ export default function Contact() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactMessage) => {
-      const response = await apiRequest("POST", `${config.apiEndpoint}/contact`, data);
+      if (!token) {
+        throw new Error("Please complete the captcha");
+      }
+      const response = await apiRequest("POST", `${config.apiEndpoint}/contact`, {
+        ...data,
+        captchaToken: token
+      });
       return response.json();
     },
     onSuccess: () => {
@@ -42,11 +51,13 @@ export default function Contact() {
       });
       setIsSubmitted(true);
       form.reset();
+      setToken(null);
+      captchaRef.current?.resetCaptcha();
     },
-    onError: () => {
+    onError: (error) => {
       toast({
         title: "Error sending message",
-        description: "Please try again later.",
+        description: error instanceof Error ? error.message : "Please try again later.",
         variant: "destructive",
       });
     },
@@ -61,7 +72,7 @@ export default function Contact() {
       <section id="contact" className="py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-normal mb-4">THANK YOU!</h2>
+            <h2>THANK YOU!</h2>
             <p className="text-lg text-accent max-w-2xl mx-auto mb-8">
               Your message has been sent successfully. I will get back to you soon.
             </p>
@@ -196,9 +207,18 @@ export default function Contact() {
                   )}
                 />
 
+                <div className="flex justify-center mb-4">
+                  <HCaptcha
+                    ref={captchaRef}
+                    sitekey={config.hcaptchaSiteKey}
+                    onVerify={setToken}
+                    theme="light"
+                  />
+                </div>
+
                 <Button
                   type="submit"
-                  disabled={contactMutation.isPending}
+                  disabled={contactMutation.isPending || !token}
                   className="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-accent transition-colors duration-300 font-medium"
                 >
                   {contactMutation.isPending ? "SENDING..." : "SEND MESSAGE"}
