@@ -6,23 +6,23 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import type { PortfolioItem } from "@shared/schema";
-import jungleHouseElevation from "@assets/view elevation_CShading_LightMix.jpg";
-import jungleHouseDecking from "@assets/view decking.jpg";
-import nayaritPatio from "@assets/nayarit-patio-largedoor.jpg";
-import nayaritKitchen from "@assets/kitchen_skylight.jpg";
-import eewScreenshot from "@assets/Screenshot 2024-07-31 144658.png";
-import sensorDetect from "@assets/sensor-detect.png";
-import batterseaImage from "@assets/battersea-1-gigapixel-low resolution-2x.jpg";
-import armchairSlope from "@assets/armchair slope_chair.jpg";
-import dimensiva314 from "@assets/dimensiva_314_chair.jpg";
-import dimensiva629 from "@assets/dimensiva_629_chair.jpg";
-import shardImage from "@assets/the-shard-gigapixel-low resolution-2x.jpg";
-import kogeDark from "@assets/koge-dark.jpg";
-import kogeLight from "@assets/koge.jpg";
-import grilloAd2 from "@assets/Google-Ad-image2.jpg";
-import grilloAd3 from "@assets/Google-Ad-image3.jpg";
-import grilloAd4 from "@assets/Google-Ad-image4.jpg";
-import grilloAd5 from "@assets/Google-Ad-image5.jpg";
+import jungleHouseElevation from "@assets/1500w/view elevation_CShading_LightMix-1500w-low resolution-1500w.jpeg";
+import jungleHouseDecking from "@assets/1500w/view decking-1500w-standard v2-1500w.jpeg";
+import nayaritPatio from "@assets/1500w/nayarit-patio-largedoor-1500w-standard v2-1500w.jpeg";
+import nayaritKitchen from "@assets/1500w/kitchen_skylight-1500w-standard v2-1500w.jpeg";
+import eewScreenshot from "@assets/1500w/Screenshot 2024-07-31 144658-1500w-standard v2-1500w.jpeg";
+import sensorDetect from "@assets/1500w/sensor-detect-1500w-standard v2-1500w.jpeg";
+import batterseaImage from "@assets/1500w/battersea-1-gigapixel-low resolution-2x-1500w-standard v2-1500w.jpeg";
+import armchairSlope from "@assets/1500w/armchair slope_chair-1500w-standard v2-1500w.jpeg";
+import dimensiva314 from "@assets/1500w/dimensiva_314_chair-1500w-standard v2-1500w.jpeg";
+import dimensiva629 from "@assets/1500w/dimensiva_629_chair-1500w-low resolution-1500w.jpeg";
+import shardImage from "@assets/1500w/the-shard-gigapixel-low resolution-2x-1500w-standard v2-1500w.jpeg";
+import kogeDark from "@assets/1500w/koge-dark-1500w-standard v2-1500w.jpeg";
+import kogeLight from "@assets/1500w/koge-1500w-standard v2-1500w.jpeg";
+import grilloAd2 from "@assets/1500w/Google-Ad-image2-1500w-standard v2-1500w.jpeg";
+import grilloAd3 from "@assets/1500w/Google-Ad-image3-1500w-standard v2-1500w.jpeg";
+import grilloAd4 from "@assets/1500w/Google-Ad-image4-1500w-standard v2-1500w.jpeg";
+import grilloAd5 from "@assets/1500w/Google-Ad-image5-1500w-standard v2-1500w.jpeg";
 
 // Extended portfolio interface for multiple images
 interface ExtendedPortfolioItem extends PortfolioItem {
@@ -227,11 +227,11 @@ export default function Gallery() {
                 <div className="flex-1 p-6 overflow-auto">
                   <div className="grid grid-cols-1 lg:grid-cols-3 h-full gap-8">
                     <div className="lg:col-span-2">
-                      <div className="relative h-full overflow-hidden rounded-2xl">
+                      <div className="relative h-[calc(90vh-8rem)] overflow-hidden">
                         <img
                           src={selectedItem.images[currentImageIndex]}
                           alt={`${selectedItem.title} - Image ${currentImageIndex + 1}`}
-                          className={`w-full h-full rounded-2xl ${
+                          className={`w-full h-full ${
                             selectedItem.title === "FURNITURE DESIGN STUDIES" 
                               ? "object-cover object-center" 
                               : "object-contain object-top"
