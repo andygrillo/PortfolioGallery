@@ -10,6 +10,7 @@ node_modules/
 # Build
 dist/
 build/
+lambda/contact-form/function.zip
 *.tsbuildinfo
 
 # Logs
