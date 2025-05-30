@@ -9,6 +9,7 @@ import type { PortfolioItem } from "@shared/schema";
 import jungleHouseElevation from "@assets/1500w/view elevation_CShading_LightMix-1500w-low resolution-1500w.jpeg";
 import jungleHouseDecking from "@assets/1500w/view decking-1500w-standard v2-1500w.jpeg";
 import nayaritPatio from "@assets/1500w/nayarit-patio-largedoor-1500w-standard v2-1500w.jpeg";
+import nayaritNight from "@assets/1500w/patio-night-1500w-standard v2-1500w.jpeg";
 import nayaritKitchen from "@assets/1500w/kitchen_skylight-1500w-standard v2-1500w.jpeg";
 import eewScreenshot from "@assets/1500w/Screenshot 2024-07-31 144658-1500w-standard v2-1500w.jpeg";
 import sensorDetect from "@assets/1500w/sensor-detect-1500w-standard v2-1500w.jpeg";
@@ -37,7 +38,7 @@ const portfolioProjects: ExtendedPortfolioItem[] = [
     title: "NAYARIT",
     category: "Architectural Visualization and Design",
     imageUrl: nayaritPatio,
-    images: [nayaritPatio, nayaritKitchen],
+    images: [nayaritPatio, nayaritNight, nayaritKitchen],
     description: "Design for house renovation in historic Roma Colonia, Mexico City. Fast turnaround of visuals enabled design changes that kept up with architectural schedule.",
     services: [
       "3D Modelling, lighting and materials",
@@ -201,7 +202,7 @@ export default function Gallery() {
                   src={item.imageUrl}
                   alt={item.title}
                   className={`w-full h-64 object-cover rounded-t-lg ${
-                    item.title === "JUNGLE HOUSE" ? "object-left scale-125 -ml-8" : 
+                    item.title === "JUNGLE HOUSE" ? "object-center" : 
                     item.title === "FURNITURE DESIGN STUDIES" ? "object-center scale-110" : ""
                   }`}
                   loading="lazy"
