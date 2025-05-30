@@ -10,7 +10,32 @@ const contactMessageSchema = z.object({
   message: z.string().min(1)
 });
 
+// Get allowed origin based on environment
+const getAllowedOrigin = () => {
+  const origin = process.env.NODE_ENV === 'production'
+    ? 'https://andygrillo.github.io'
+    : 'http://localhost:5173';
+  return origin;
+};
+
+// CORS headers
+const corsHeaders = {
+  'Access-Control-Allow-Origin': getAllowedOrigin(),
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Credentials': 'true'
+};
+
 exports.handler = async (event) => {
+  // Handle OPTIONS request for CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: corsHeaders,
+      body: ''
+    };
+  }
+
   try {
     // Parse request body
     const body = JSON.parse(event.body);
@@ -48,11 +73,7 @@ ${validatedData.message}
     
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': 'https://andygrillo.github.io',
-        'Access-Control-Allow-Methods': 'POST',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      },
+      headers: corsHeaders,
       body: JSON.stringify({
         message: 'Message sent successfully'
       })
@@ -62,11 +83,7 @@ ${validatedData.message}
     
     return {
       statusCode: error.name === 'ZodError' ? 400 : 500,
-      headers: {
-        'Access-Control-Allow-Origin': 'https://andygrillo.github.io',
-        'Access-Control-Allow-Methods': 'POST',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      },
+      headers: corsHeaders,
       body: JSON.stringify({
         message: error.name === 'ZodError' ? 'Invalid request data' : 'Internal server error'
       })
