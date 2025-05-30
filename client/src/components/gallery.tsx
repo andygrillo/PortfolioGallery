@@ -187,13 +187,7 @@ export default function Gallery() {
               </Card>
             ))}
           </div>
-        ) : error ? (
-          <div className="text-center py-12">
-            <p className="text-lg text-accent mb-4">
-              Unable to load portfolio items. Displaying portfolio projects:
-            </p>
-          </div>
-        ) : null}
+        ) : error ? null : null}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item) => (
