@@ -19,10 +19,8 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="mb-8">
-          <div className="inline-block px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 mb-6">
-            <span className="text-sm font-medium text-accent uppercase tracking-wider">RIBA Registered Architect</span>
-          </div>
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6 hero-text leading-none">
+          
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-light mb-6 hero-text leading-none">
             ANDY<br />
             <span className="text-accent">MEIRA</span>
           </h1>
@@ -30,7 +28,7 @@ export default function Hero() {
         
         <div className="max-w-3xl mx-auto mb-12">
           <p className="text-xl sm:text-2xl text-gray-600 mb-6 leading-relaxed font-light">
-            Architect & 3D Artist specializing in photorealistic visualizations
+            3D Art and Visualization
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
@@ -39,7 +37,7 @@ export default function Hero() {
             </div>
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
               <div className="text-2xl font-bold text-primary">UK</div>
-              <div className="text-sm text-accent uppercase tracking-wide">Trained Professional</div>
+              <div className="text-sm text-accent uppercase tracking-wide">Registered Architect</div>
             </div>
             <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
               <div className="text-2xl font-bold text-primary">Global</div>
@@ -65,7 +63,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-12 text-sm text-gray-500">
-          <p>Featured in: Wired • Working with: Amazon, IBM, Clinton Foundation</p>
+          <p>Featured in: Wired, CNN, Architects Journal • Working with: Amazon, IBM, Squint Opera, McAslan&Partners</p>
         </div>
       </div>
     </section>

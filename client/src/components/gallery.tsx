@@ -164,8 +164,8 @@ export default function Gallery() {
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">SELECTED WORKS</h2>
           <p className="text-lg text-accent max-w-2xl mx-auto">
-            A curated collection of 3D projects spanning architectural visualization,
-            product design, and experimental digital art.
+            A curated collection of 3D projects showcasing architectural visualization,
+            product design, marketing materials.
           </p>
         </div>
 
@@ -220,8 +220,8 @@ export default function Gallery() {
           <DialogContent className="max-w-4xl w-full h-[90vh] p-0">
             {selectedItem && (
               <div className="flex flex-col h-full">
-                <DialogHeader className="p-6 pb-0">
-                  <DialogTitle className="text-2xl font-bold">{selectedItem.title}</DialogTitle>
+                <DialogHeader className="p-6 pb-4">
+                  <DialogTitle className="text-2xl font-light">{selectedItem.title}</DialogTitle>
                 </DialogHeader>
                 
                 <div className="flex-1 p-6 overflow-auto">
@@ -234,7 +234,7 @@ export default function Gallery() {
                           className={`w-full h-full rounded-lg ${
                             selectedItem.title === "FURNITURE DESIGN STUDIES" 
                               ? "object-cover object-center" 
-                              : "object-contain"
+                              : "object-contain object-top"
                           }`}
                         />
                       </div>
