@@ -4,7 +4,7 @@ export default function About() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">ABOUT</h2>
+            <h2>ABOUT</h2>
             <p className="text-lg text-accent mb-6 leading-relaxed">
               I am Andy Meira, RIBA registered architect and 3D artist with over 15 years 
               of experience in architectural visualization and 3D design. My work spans from 
@@ -26,7 +26,7 @@ export default function About() {
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-3">TECHNICAL EXPERTISE</h3>
+                <h3>TECHNICAL EXPERTISE</h3>
                 <div className="grid grid-cols-2 gap-3 text-accent">
                   <div>• 3ds Max</div>
                   <div>• Corona Renderer</div>
@@ -42,7 +42,7 @@ export default function About() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-3">NOTABLE CLIENTS</h3>
+                <h3>NOTABLE CLIENTS</h3>
                 <div className="text-accent space-y-1">
                   <div>• Clinton Foundation</div>
                   <div>• Deutsche Bank</div>

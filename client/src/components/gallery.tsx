@@ -27,6 +27,7 @@ import grilloAd5 from "@assets/Google-Ad-image5.jpg";
 // Extended portfolio interface for multiple images
 interface ExtendedPortfolioItem extends PortfolioItem {
   images: string[];
+  services?: string[];
 }
 
 // Portfolio projects
@@ -34,10 +35,15 @@ const portfolioProjects: ExtendedPortfolioItem[] = [
   {
     id: 1,
     title: "NAYARIT",
-    category: "Architectural Visualization",
+    category: "Architectural Visualization and Design",
     imageUrl: nayaritPatio,
     images: [nayaritPatio, nayaritKitchen],
-    description: "Design for a house in historic Roma Colonia, Mexico. Contemporary residential architecture respecting the historic neighborhood context.",
+    description: "Design for house renovation in historic Roma Colonia, Mexico City. Fast turnaround of visuals enabled design changes that kept up with architectural schedule.",
+    services: [
+      "3D Modelling, lighting and materials",
+      "Photorealistic rendering at different times of day",
+      "Post-Production with photoshop and stable diffusion"
+    ],
     isActive: true,
   },
   {
@@ -46,7 +52,7 @@ const portfolioProjects: ExtendedPortfolioItem[] = [
     category: "Architectural Visualization",
     imageUrl: jungleHouseElevation,
     images: [jungleHouseElevation, jungleHouseDecking],
-    description: "Sustainable house design for Yucatan Peninsula, Mexico. Elevated above tree canopy with minimal environmental impact and natural ventilation.",
+    description: "Sustainable house design for Yucatan Peninsula, Mexico. Elevated above tree canopy with minimal environmental impact and natural ventilation.\nExtensive use of scatter for vegetation with selected tree and bush models for location accuracy.",
     isActive: true,
   },
   {
@@ -162,7 +168,7 @@ export default function Gallery() {
     <section id="work" className="py-20 bg-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">SELECTED WORKS</h2>
+          <h2>SELECTED WORKS</h2>
           <p className="text-lg text-accent max-w-2xl mx-auto">
             A curated collection of 3D projects showcasing architectural visualization,
             product design, marketing materials.
@@ -200,7 +206,7 @@ export default function Gallery() {
                 <img
                   src={item.imageUrl}
                   alt={item.title}
-                  className={`w-full h-64 object-cover ${
+                  className={`w-full h-64 object-cover rounded-t-lg ${
                     item.title === "JUNGLE HOUSE" ? "object-left scale-125 -ml-8" : 
                     item.title === "FURNITURE DESIGN STUDIES" ? "object-center scale-110" : ""
                   }`}
@@ -208,7 +214,7 @@ export default function Gallery() {
                 />
               </div>
               <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <h3 className="text-xl font-normal mb-2">{item.title}</h3>
                 <p className="text-accent">{item.category}</p>
               </CardContent>
             </Card>
@@ -227,11 +233,11 @@ export default function Gallery() {
                 <div className="flex-1 p-6 overflow-auto">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
                     <div className="lg:col-span-2 flex flex-col">
-                      <div className="relative flex-1">
+                      <div className="relative flex-1 overflow-hidden rounded-2xl">
                         <img
                           src={selectedItem.images[currentImageIndex]}
                           alt={`${selectedItem.title} - Image ${currentImageIndex + 1}`}
-                          className={`w-full h-full rounded-lg ${
+                          className={`w-full h-full rounded-2xl ${
                             selectedItem.title === "FURNITURE DESIGN STUDIES" 
                               ? "object-cover object-center" 
                               : "object-contain object-top"
@@ -263,23 +269,31 @@ export default function Gallery() {
                     
                     <div className="space-y-6">
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">Project Type</h3>
+                        <h3>PROJECT TYPE</h3>
                         <p className="text-accent">{selectedItem.category}</p>
                       </div>
                       
                       {selectedItem.description && (
                         <div>
-                          <h3 className="text-lg font-semibold mb-2">Description</h3>
+                          <h3>DESCRIPTION</h3>
                           <p className="text-accent leading-relaxed">{selectedItem.description}</p>
                         </div>
                       )}
                       
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">Services Used</h3>
+                        <h3>SERVICES USED</h3>
                         <div className="space-y-1 text-accent text-sm">
-                          <p>• 3D Modeling & Visualization</p>
-                          <p>• Photorealistic Rendering</p>
-                          <p>• Post-Production</p>
+                          {selectedItem.services ? (
+                            selectedItem.services.map((service, index) => (
+                              <p key={index}>• {service}</p>
+                            ))
+                          ) : (
+                            <>
+                              <p>• 3D Modelling, materials and lighting</p>
+                              <p>• Photorealistic rendering</p>
+                              <p>• Post-Production</p>
+                            </>
+                          )}
                         </div>
                       </div>
                       

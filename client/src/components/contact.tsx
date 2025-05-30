@@ -61,7 +61,7 @@ export default function Contact() {
       <section id="contact" className="py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">THANK YOU!</h2>
+            <h2 className="text-3xl sm:text-4xl font-normal mb-4">THANK YOU!</h2>
             <p className="text-lg text-accent max-w-2xl mx-auto mb-8">
               Your message has been sent successfully. I will get back to you soon.
             </p>
@@ -82,7 +82,7 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-secondary">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">GET IN TOUCH</h2>
+          <h2>GET IN TOUCH</h2>
           <p className="text-lg text-accent max-w-2xl mx-auto">
             Ready to bring your vision to life? Let's discuss your project
             and explore how we can create something extraordinary together.
@@ -93,7 +93,7 @@ export default function Contact() {
           {/* Services */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">SERVICES</h3>
+              <h3>SERVICES</h3>
               <div className="space-y-2 text-accent">
                 <p>• Architectural Visualization</p>
                 <p>• Product Rendering & Marketing Imagery</p>
@@ -105,7 +105,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4">AVAILABILITY</h3>
+              <h3>AVAILABILITY</h3>
               <div className="space-y-2 text-accent">
                 <p>Available for remote projects worldwide</p>
                 <p>Accepting new commissions</p>
