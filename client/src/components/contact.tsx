@@ -73,16 +73,9 @@ export default function Contact() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2>THANK YOU!</h2>
-            <p className="text-lg text-accent max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-accent max-w-2xl mx-auto">
               Your message has been sent successfully. I will get back to you soon.
             </p>
-            <Button
-              onClick={() => setIsSubmitted(false)}
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-white"
-            >
-              SEND ANOTHER MESSAGE
-            </Button>
           </div>
         </div>
       </section>
