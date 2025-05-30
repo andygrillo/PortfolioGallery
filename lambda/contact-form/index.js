@@ -42,10 +42,11 @@ exports.handler = async (event) => {
     
     // Prepare email parameters
     const emailParams = {
-      Source: 'andresmeira@gmail.com', // This email must be verified in SES
+      Source: `"${validatedData.name}" <andresmeira@gmail.com>`, // Verified email with sender's name
       Destination: {
         ToAddresses: ['andresmeira@gmail.com']
       },
+      ReplyToAddresses: [validatedData.email], // Set reply-to as sender's email
       Message: {
         Subject: {
           Data: `New Contact Form Submission: ${validatedData.projectType}`
