@@ -228,7 +228,7 @@ export default function Gallery() {
                 <div className="flex-1 p-6 overflow-auto">
                   <div className="grid grid-cols-1 lg:grid-cols-3 h-full gap-8">
                     <div className="lg:col-span-2">
-                      <div className="relative h-[calc(90vh-8rem)] overflow-hidden">
+                      <div className="relative h-[calc(90vh-8rem)] overflow-hidden group">
                         <img
                           src={selectedItem.images[currentImageIndex]}
                           alt={`${selectedItem.title} - Image ${currentImageIndex + 1}`}
@@ -238,6 +238,24 @@ export default function Gallery() {
                               : "object-contain object-top"
                           }`}
                         />
+                        {selectedItem.images.length > 1 && (
+                          <>
+                            <button
+                              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 opacity-0 group-hover:opacity-70 hover:opacity-100 transition-opacity duration-200 disabled:opacity-30"
+                              disabled={currentImageIndex === 0}
+                            >
+                              <ChevronLeft className="w-8 h-8 text-white" />
+                            </button>
+                            <button
+                              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 opacity-0 group-hover:opacity-70 hover:opacity-100 transition-opacity duration-200 disabled:opacity-30"
+                              disabled={currentImageIndex === selectedItem.images.length - 1}
+                            >
+                              <ChevronRight className="w-8 h-8 text-white" />
+                            </button>
+                          </>
+                        )}
                         
                         {selectedItem.images.length > 1 && (
                           <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center space-x-6">
