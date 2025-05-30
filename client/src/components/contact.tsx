@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { config } from "@/config";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -31,7 +32,7 @@ export default function Contact() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactMessage) => {
-      const response = await apiRequest("POST", "/api/contact", data);
+      const response = await apiRequest("POST", `${config.apiEndpoint}/contact`, data);
       return response.json();
     },
     onSuccess: () => {

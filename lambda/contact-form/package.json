@@ -1,0 +1,10 @@
+{
+  "name": "contact-form-lambda",
+  "version": "1.0.0",
+  "description": "AWS Lambda function for handling contact form submissions",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.1531.0",
+    "zod": "^3.22.4"
+  }
+}
