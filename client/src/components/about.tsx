@@ -45,6 +45,7 @@ export default function About() {
               <div>• Unreal Engine and Unity 3D</div>
               <div>• AutoCAD, Microstation & ArchiCAD</div>
               <div>• Adobe Suite (Photoshop, After Effects, Premiere Pro)</div>
+              <div>• Drone Mapping & Photogrammetry</div>
               <div>• Stable Diffusion & AI integration</div>
             </div>
           </div>
